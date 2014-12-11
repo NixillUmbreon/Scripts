@@ -20,18 +20,6 @@ function Position(x, y, z)
       local z = pos1.z + pos2.z
       return Position(x, y, z)
     end,
-    subtract = function(pos1, pos2)
-      local x = pos1.x - pos2.x
-      local y = pos1.y - pos2.y
-      local z = pos1.z - pos2.z
-      return Position(x, y, z)
-    end,
-    length = function(pos1)
-      local x = pos1.x
-      local y = pos1.y
-      local z = pos1.z
-      return (x^2 + y^2 + z^2)^0.5
-    end,
     equals = function(pos1, pos2)
       local xeq = (pos1.x == pos2.x)
       local yeq = (pos1.y == pos2.y)
@@ -44,8 +32,11 @@ function Position(x, y, z)
       local z = math.floor(pos1.z)
       return Position(x, y, z)
     end,
-    toString = function(pos1)
-      return ("{%d, %d, %d}"):format(pos1.x, pos1.y, pos1.z)
+    length = function(pos1)
+      local x = pos1.x
+      local y = pos1.y
+      local z = pos1.z
+      return (x^2 + y^2 + z^2)^0.5
     end,
     longest = function(pos1)
       --[[ Returns the sides in order of length and direction.
@@ -80,6 +71,15 @@ function Position(x, y, z)
         table.insert(values, 2, zValue)
       else table.insert(values, zValue) end
       return values[1], values[2], values[3]
+    end,
+    subtract = function(pos1, pos2)
+      local x = pos1.x - pos2.x
+      local y = pos1.y - pos2.y
+      local z = pos1.z - pos2.z
+      return Position(x, y, z)
+    end,
+    toString = function(pos1)
+      return ("{%d, %d, %d}"):format(pos1.x, pos1.y, pos1.z)
     end
   }
   return values
