@@ -144,6 +144,7 @@ cRot = rotations[dPos:subtract(cPos):longest()]
 chasing = false
 
 while true do
+  os.sleep(0.05)
   pPos = position.player(d, owner)
   cPos = position.current(d)
   if pPos ~= nil then
